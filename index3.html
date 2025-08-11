@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cute Website with Subheading Sections & Images</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: lavender;
+    font-family: 'Baloo 2', cursive;
+    text-align: center;
+    overflow-x: hidden;
+  }
+
+  p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #6a4c93;
+    background-color: #e6d0f0;
+    padding: 12px 20px;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: 10px auto 30px auto;
+    box-shadow: 0 4px 6px rgba(106, 76, 147, 0.3);
+    line-height: 1.5;
+  }
+
+  /* Main headings */
+  h1, h2 {
+    font-size: 50px;
+    color: white;
+    margin-top: 50px;
+    position: relative;
+    display: inline-block;
+    padding: 15px 25px;
+    border-radius: 25px;
+    z-index: 10;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    font-weight: 600;
+  }
+
+  h2 {
+    font-size: 36px;
+    margin-top: 30px;
+  }
+
+  /* Bubbly highlight effect */
+  h1::before, h2::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 25px;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(186,85,211,0.8) 0%, transparent 40%),
+      radial-gradient(circle at 70% 60%, rgba(238,130,238,0.7) 0%, transparent 40%),
+      radial-gradient(circle at 40% 80%, rgba(148,0,211,0.6) 0%, transparent 40%);
+    background-color: rgba(128,0,128,0.4);
+    filter: blur(3px);
+    z-index: -1;
+    animation: floatBubbles 6s infinite ease-in-out;
+  }
+
+  @keyframes floatBubbles {
+    0% {
+      background-position: 20% 30%, 70% 60%, 40% 80%;
+    }
+    50% {
+      background-position: 25% 25%, 65% 55%, 45% 75%;
+    }
+    100% {
+      background-position: 20% 30%, 70% 60%, 40% 80%;
+    }
+  }
+
+  /* Floating emoji styles */
+  .floating-emoji {
+    position: fixed;
+    user-select: none;
+    pointer-events: none;
+    font-size: var(--size);
+    animation-name: floatUp, drift;
+    animation-timing-function: linear, ease-in-out;
+    animation-iteration-count: infinite, infinite;
+    animation-direction: normal, alternate;
+    left: var(--left);
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-150px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes drift {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(var(--drift));
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  /* Cute numbered subheadings */
+  .subheading {
+    max-width: 700px;
+    margin: 40px auto 60px auto;
+    text-align: left;
+    font-family: 'Baloo 2', cursive;
+  }
+
+  .subheading h3 {
+    font-size: 28px;
+    margin: 0 0 15px 0;
+    background: linear-gradient(90deg, #b38eb8, #d7a1d7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-shadow: 0 0 5px rgba(200, 160, 230, 0.7);
+    padding-left: 40px;
+  }
+
+  .subheading h3::before {
+    content: attr(data-num);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #d7a1d7;
+    color: white;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    box-shadow: 0 0 10px #b38eb8;
+  }
+
+  /* Flower-themed horizontal line */
+  .flower-line-container {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+  }
+
+  hr.flower-line {
+    border: none;
+    height: 2px;
+    background-color: #b38eb8;
+    margin: 0;
+    border-radius: 2px;
+  }
+
+  .flowers {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    user-select: none;
+    font-size: 24px;
+  }
+
+  .flowers span {
+    display: inline-block;
+    animation: sway 3s ease-in-out infinite;
+  }
+
+  .flowers span:nth-child(odd) {
+    animation-delay: 0s;
+  }
+  .flowers span:nth-child(even) {
+    animation-delay: 1.5s;
+  }
+
+  @keyframes sway {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(6px);
+    }
+  }
+
+  /* Image placeholder container */
+  .image-placeholder {
+    width: 100%;
+    max-width: 700px;
+    height: 350px;
+    margin: 0 auto 15px auto;
+    background-color: #f5e6ffcc;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(150, 80, 180, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  /* Images inside placeholder */
+  .image-placeholder img.sub-img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 20px;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Purple Spiderman letter icon */
+  #spideyLetter {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #6a0dad;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #6a0dad;
+    color: white;
+    font-size: 36px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+  }
+
+  #spideyLetter:hover {
+    transform: scale(1.2);
+  }
+
+  #letterPanel {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 400px;
+    max-width: 90vw;
+    background: #8a2be2;
+    color: white;
+    padding: 25px 30px;
+    border-radius: 25px;
+    box-shadow: 0 0 25px #6a0dad;
+    font-family: 'Poppins', sans-serif;
+    z-index: 1001;
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    box-sizing: border-box;
+  }
+
+  #letterPanel h3 {
+    margin-top: 0;
+    font-size: 22px;
+  }
+
+  #letterPanel p {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  #closeLetterBtn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    font-weight: bold;
+    line-height: 1;
+    padding: 0;
+    user-select: none;
+    float: right;
+  }
+</style>
+</head>
+<body>
+
+<h1>My Cute Website</h1>
+
+<p>Heyyyyyyyy my beautiful baby!!!! Happy one year anniversary to us and espectually for you.Im buiding this website as all the lovely and beautiful endless things about you that truly love and also all the things that you love too my pretty Angel.I hope you like it tons</p>
+
+<h2>The most amazing things about you is you, your heart and your soul and your endless joy and love</h2>
+
+<!-- Subheadings with image inside the box -->
+
+<div class="subheading">
+  <h3 data-num="1">Your beautiful smile</h3>
+  <div class="flower-line-container">
+    <hr class="flower-line" />
+    <div class="flowers">
+      <span>🌸</span><span>🌺</span><span>🌼</span><span>🌷</span><span>🌻</span>
+      <span>🌹</span><span>🌻</span><span>🌷</span><span>🌼</span><span>🌺</span><span>🌸</span>
+    </div>
+  </div>
+  <div class="image-placeholder">
+    <img src="mybaby.jpg" alt="Your beautiful smile" class="sub-img" />
+  </div>
+  <p>Your beautiful smile lights up my whole world, A smile of happiness, A smile of love and a smile that brings endless joy into the world. Seeing you smile and have joy in your day and soul really melts my heart with happiness and your smile is straight from heaven and I could stare and make you smile forever. It's so cute and adorable and your smile is one out of billions and infinity reasons that I'm happy</p>
+</div>
+
+<div class="subheading">
+  <h3 data-num="2">Your adorable laugh</h3>
+  <div class="flower-line-container">
+    <hr class="flower-line" />
+    <div class="flowers">
+      <span>🌸</span><span>🌺</span><span>🌼</span><span>🌷</span><span>🌻</span>
+      <span>🌹</span><span>🌻</span><span>🌷</span><span>🌼</span><span>🌺</span><span>🌸</span>
+    </div>
+  </div>
+  <div class="image-placeholder">
+    <img src="mybaby2.jpg" alt="Your adorable laugh" class="sub-img" />
+  </div>
+  <p>OOOOOOOOOOO lets start with your sweet laugh .When you send me voice notes and when you smile i love to hear you laugh and just hearing you sound happy. Even though you sometimes don't like your laugh ,i absolutely adore it and to be honest when i hear you laugh in person and in the voice note.I cant stop smiling on how sweet and joyful your laugh is and lets not forget your sweet stunning voice :) Your voice is literally an angel and its beautiful as a calm adoring melody that is heaven to my ears. And also you are really funny and cutely silly too</p>
+</div>
+
+<div class="subheading">
+  <h3 data-num="3">Your amazing shows and music</h3>
+  <div class="flower-line-container">
+    <hr class="flower-line" />
+    <div class="flowers">
+      <span>🌸</span><span>🌺</span><span>🌼</span><span>🌷</span><span>🌻</span>
+      <span>🌹</span><span>🌻</span><span>🌷</span><span>🌼</span><span>🌺</span><span>🌸</span>
+    </div>
+  </div>
+  <div class="image-placeholder">
+    <img src="mybaby3.jpg" alt="Your amazing shows and music" class="sub-img" />
+  </div>
+  <p>Your music taste is beyond this whole wide world and I cant believe the awesome artist and singers that you listen too all the time and we have so much in common in terms of artists and remember you put me on Laufey and i put you on PND!!! super super wonderful and the shows you watch is great and super interesting too and you did put me on so many unforgettable shows and i hope soon we can watch movies and shows together when we hang out .Im looking forward to hang out with you soon my baby ❤️</p>
+</div>
+
+<div class="subheading">
+  <h3 data-num="4">How strong you really are</h3>
+  <div class="flower-line-container">
+    <hr class="flower-line" />
+    <div class="flowers">
+      <span>🌸</span><span>🌺</span><span>🌼</span><span>🌷</span><span>🌻</span>
+      <span>🌹</span><span>🌻</span><span>🌷</span><span>🌼</span><span>🌺</span><span>🌸</span>
+    </div>
+  </div>
+  <div class="image-placeholder">
+    <img src="mybaby4.jpg" alt="How strong you really are" class="sub-img" />
+  </div>
+  <p>You are really strong and super wonderful inside and out Jade. You have a really strong and great mind and a heart that is pure and unstoppable, and I know that you can overcome the challenges that you are dealing with and i know your heart and soul is strong and worthy of fighting and always reminding happy forever. Never give up my love you can do this, and you are my beautiful superwoman and a truly blessed angel. I pray that God guides you and take all the negative things and thoughts from your life. You are perfect, beyond perfection MWAHHHHH and you are smart too. My sweet intelligent baby. God made you perfect head to toe inside and out</p>
+</div>
+
+<div class="subheading">
+  <h3 data-num="5">How happy you truly make me feel</h3>
+  <div class="flower-line-container">
+    <hr class="flower-line" />
+    <div class="flowers">
+      <span>🌸</span><span>🌺</span><span>🌼</span><span>🌷</span><span>🌻</span>
+      <span>🌹</span><span>🌻</span><span>🌷</span><span>🌼</span><span>🌺</span><span>🌸</span>
+    </div>
+  </div>
+  <div class="image-placeholder">
+    <img src="mybaby5.jpg" alt="How happy you truly make me feel" class="sub-img" />
+  </div>
+  <p>The way you make me happy ,the way you bring bundles and bundles of loving joy into my life and heart is really the sweetest ever and i really appreciate you from the bottom of my heart. You are always there for me, always giving me your endless adoring love and you always show me what true really is :) .I thank God for bringing the most gorgeous and breath taking stunning angel that is you into my life .You healed my heart when it was shattered into pieces, You gave me endless joy and you did lighten up my whole universe that you are in, and without you, I probably wouldn't be here today and i appreciate everything you do for me. You are my home and my one and only love. You are the best girlfriend in the whole wide universe</p>
+</div>
+
+<div class="subheading">
+  <h3 data-num="6">The time we spend together</h3>
+  <div class="flower-line-container">
+    <hr class="flower-line" />
+    <div class="flowers">
+      <span>🌸</span><span>🌺</span><span>🌼</span><span>🌷</span><span>🌻</span>
+      <span>🌹</span><span>🌻</span><span>🌷</span><span>🌼</span><span>🌺</span><span>🌸</span>
+    </div>
+  </div>
+  <div class="image-placeholder">
+    <img src="mybaby6.jpg" alt="The time we spend together" class="sub-img" />
+  </div>
+  <p>I remember all the wonderful times we spend together, the time we went to the beach, the time we sit with each other break time and talk about our own things and stare into each other's eyes and adore the love we have for each other too. We always used to sit at friesLars class and play games and at Meyers class to watch movies and series like the henry danger movie and never have i ever which we must still complete. I enjoy and love the moments we spend with other and i love hanging out with you too baby. I would do anything and everything to spend time with you forever ,also we also had alone time with each other which made us too couple things which i still think about to this day and honestly i cant wait to spend time with you after school and watch and eatties snackies and movies together mWAAAAAAAHHHHHH .spending time with you is the best part of my day always</p>
+</div>
+
+<div class="subheading">
+  <h3 data-num="7">Our forever future together</h3>
+  <div class="flower-line-container">
+    <hr class="flower-line" />
+    <div class="flowers">
+      <span>🌸</span><span>🌺</span><span>🌼</span><span>🌷</span><span>🌻</span>
+      <span>🌹</span><span>🌻</span><span>🌷</span><span>🌼</span><span>🌺</span><span>🌸</span>
+    </div>
+  </div>
+  <div class="image-placeholder">
+    <img src="mybaby7.jpg" alt="Our forever future together" class="sub-img" />
+  </div>
+  <p>Im looking really really really really really really really really forward to a super lovely, wonderful and forever lasting future with you now and for the rest on eternity .I cant wait to be your husband and i cant wait to see you in the most beautiful dress ever. Saying our do's and starting a new chapter of our lives as marriage couples and starting a family together :). i really want to have endless more memories together, endless more adventures and also endless love for each other. I want and will grow old with you and give you everything you want and deserve and i will never stop loving you ,Even after the day i die ,i want to die knowing that i am with the sweetest and truly amazing girl Jade Jenniker in my life. You are my future and i want to build one with you one step at a time my love only me and you forever</p>
+</div>
+
+<div class="subheading">
+  <h3 data-num="8">Our silly fun moments</h3>
+  <div class="flower-line-container">
+    <hr class="flower-line" />
+    <div class="flowers">
+      <span>🌸</span><span>🌺</span><span>🌼</span><span>🌷</span><span>🌻</span>
+      <span>🌹</span><span>🌻</span><span>🌷</span><span>🌼</span><span>🌺</span><span>🌸</span>
+    </div>
+  </div>
+  <div class="image-placeholder">
+    <img src="mybaby8.jpg" alt="Our silly fun moments" class="sub-img" />
+  </div>
+  <p>WE HAD SO MUCH SILLY MOMENTS TOGETHER, one them is when we were at the beach and we went deep in the water with our feet and our long pants and we were playing and having so much fun ad when we were eating at mac Donald's we ate and you saw me will all the daily beverages and it was so silly and sometimes we take silly pictures and videos together sometimes. I would love for us to go out together again and remake and make memories again :)</p>
+</div>
+
+<div class="subheading">
+  <h3 data-num="9">You are my soulmate</h3>
+  <div class="flower-line-container">
+    <hr class="flower-line" />
+    <div class="flowers">
+      <span>🌸</span><span>🌺</span><span>🌼</span><span>🌷</span><span>🌻</span>
+      <span>🌹</span><span>🌻</span><span>🌷</span><span>🌼</span><span>🌺</span><span>🌸</span>
+    </div>
+  </div>
+  <div class="image-placeholder">
+    <img src="mybaby9.jpg" alt="You are my soulmate" class="sub-img" />
+  </div>
+  <p>You are the biggest part of me my Jade ,everything about you inside and out is truly wonderful and gorgeous and you are my wonderful soulmate ,my partner in crime and my amazing girlfriend and future wife and you are also a truly heaven sent in my life and u showed me the reason for living and you show me true happiness and love and i will forever love and cherish for the rest of my life</p>
+</div>
+
+<div class="subheading">
+  <h3 data-num="10">You are God's perfect Angel</h3>
+  <div class="flower-line-container">
+    <hr class="flower-line" />
+    <div class="flowers">
+      <span>🌸</span><span>🌺</span><span>🌼</span><span>🌷</span><span>🌻</span>
+      <span>🌹</span><span>🌻</span><span>🌷</span><span>🌼</span><span>🌺</span><span>🌸</span>
+    </div>
+  </div>
+  <div class="image-placeholder">
+    <img src="mybaby10.jpg" alt="You are God's perfect Angel" class="sub-img" />
+  </div>
+  <p>You are Gods perfect Angel .A angel with a perfect heart ,a angel with the sweetest love, a angel with a beauty of a queen and the eyes, kisses, lips, laugh and smile of a beautiful lover. No matter what Jade ,you will always be my number 1 person ever ,my only love ,my only princess and my only girl .I pray for you all the time and our relationship and il always be here for you in your good times and bad times and at the end of the day,I really don't want you to deal with negative things in your life and your heart doesn't deserve the pain u go through always here to show you how special,great,awesome and truly worthy you are and to give you the love, care and smiles of happiness you will ever have.....I love you My honey bunny, my superhero and my everything</p>
+</div>
+
+<!-- Spider letter button -->
+<div id="spideyLetter" title="Open Letter">🕷️</div>
+
+<!-- Letter panel that pops up on clicking spider -->
+<div id="letterPanel" aria-hidden="true">
+  <button id="closeLetterBtn" aria-label="Close letter panel">&times;</button>
+  <h3>My Love Letter to You</h3>
+  <p>
+    Babe, this is my heartfelt letter to you on our special anniversary. You mean the world to me. Your smile, laugh, strength, and love make my life complete. I cherish every moment we share and look forward to forever with you.
+  </p>
+</div>
+
+<script>
+  const spideyLetter = document.getElementById('spideyLetter');
+  const letterPanel = document.getElementById('letterPanel');
+  const closeBtn = document.getElementById('closeLetterBtn');
+
+  spideyLetter.addEventListener('click', () => {
+    const isVisible = letterPanel.style.opacity === '1';
+    if (isVisible) {
+      letterPanel.style.opacity = '0';
+      letterPanel.style.pointerEvents = 'none';
+      letterPanel.style.transform = 'translateY(20px) scale(0.8)';
+      letterPanel.setAttribute('aria-hidden', 'true');
+    } else {
+      letterPanel.style.opacity = '1';
+      letterPanel.style.pointerEvents = 'auto';
+      letterPanel.style.transform = 'translateY(0) scale(1)';
+      letterPanel.setAttribute('aria-hidden', 'false');
+    }
+  });
+
+  closeBtn.addEventListener('click', () => {
+    letterPanel.style.opacity = '0';
+    letterPanel.style.pointerEvents = 'none';
+    letterPanel.style.transform = 'translateY(20px) scale(0.8)';
+    letterPanel.setAttribute('aria-hidden', 'true');
+  });
+</script>
+
+</body>
+</html>
